@@ -1,3 +1,5 @@
+from django.db.models import Q
+from django.http import Http404
 from django.shortcuts import render, get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -10,8 +12,6 @@ from .serializers import AdSerializer
 from .pagination import StandardResultsSetPagination
 from rest_framework.parsers import MultiPartParser
 from rest_framework.permissions import IsAuthenticated
-
-
 
 
 class AdListView(APIView,StandardResultsSetPagination):
@@ -36,23 +36,40 @@ class AdCreateView(APIView):
         return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
 
 class AdDetailView(APIView):
+    permission_classes = [IsAuthenticated,IsPublisherReadOnly]
     serializer_class = AdSerializer
-    permission_classes = (IsAuthenticated,IsPublisherReadOnly)
-    parser_classes = (MultiPartParser,)
-    def get_objects(self,request,pk):
-     obj = get_object_or_404(Ad.objects.all(), id=self.kwargs['pk'])
-     self.check_object_permissions(self.request, obj)
-     return obj
+    parser_classes = [MultiPartParser]
 
-    def get(self,request,pk):
-        instance = Ad.objects.get(id=pk)
-        serializer = AdSerializer(instance=instance)
-        return Response(serializer.data,status=status.HTTP_200_OK)
+    def get_object(self, pk):
+        try:
+            return Ad.objects.get(pk=pk)
+        except Ad.DoesNotExist:
+            raise Http404
 
-    def put(self,request,pk):
-        obj = self.get_objects()
-        serializer = AdSerializer(data=request.data,instance=obj)
+    def get(self, request, pk):
+        ad = self.get_object(pk)
+        serializer = AdSerializer(instance=ad)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def put(self, request, pk):
+        ad = self.get_object(pk)
+        serializer = AdSerializer(instance=ad, data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data,status=status.HTTP_200_OK)
-        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def delete(self, request, pk):
+        ad = self.get_object(pk)
+        ad.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+class AdSearchView(APIView,StandardResultsSetPagination):
+    """ex: /api/ads/search/?q= value"""
+    serializer_class = AdSerializer
+    def get(self,request):
+        q = request.GET.get('q')
+        queryset = Ad.objects.filter(Q(title=q) | Q(caption=q))
+        result = self.paginate_queryset(queryset,request)
+        serializer = AdSerializer(instance=result, many=True)
+        return Response(serializer.data,status=status.HTTP_200_OK)
+
