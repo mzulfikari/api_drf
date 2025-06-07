@@ -106,6 +106,7 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.BrowsableAPIRenderer',
 
     ],
+
     'DEFAULT_AUTHENTICATION_CLASSES': (
 
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -127,4 +128,6 @@ SPECTACULAR_SETTINGS = {
 }
 
 LOCALE_PATHS = os.path.join(BASE_DIR, 'locale/'),
+
+# PAGINATION_PAGE_SIZE = 2
 
