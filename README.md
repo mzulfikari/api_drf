@@ -1,22 +1,24 @@
-
 📌 Project Overview
 This project is a RESTful API built with Django and Django REST Framework, offering features like user authentication, advertisement management, image uploads, and wall posts. It includes JWT authentication and Swagger documentation for API exploration.
 
 ⚙️ Prerequisites
-diff
+
+bash
 Copy
 Edit
-- Python 3.8+ installed
-cpp
+Python 3.8+ installed
+bash
 Copy
 Edit
-- Git installed (optional but recommended)
-rust
+Git installed (optional but recommended)
+bash
 Copy
 Edit
-- Recommended: virtualenv for environment isolation (or use built-in venv)
+Recommended: virtualenv for environment isolation (or use built-in venv)
 📥 Installation and Setup Guide
-1. Clone the Repository
+
+Clone the Repository
+
 bash
 Copy
 Edit
@@ -25,20 +27,22 @@ bash
 Copy
 Edit
 cd api_drf
-2. Create a Virtual Environment
+Create a Virtual Environment
+
 On Linux/macOS:
 
-nginx
+bash
 Copy
 Edit
 python3 -m venv venv
 On Windows:
 
-nginx
+bash
 Copy
 Edit
 python -m venv venv
-3. Activate the Virtual Environment
+Activate the Virtual Environment
+
 On Linux/macOS:
 
 bash
@@ -47,23 +51,26 @@ Edit
 source venv/bin/activate
 On Windows:
 
+bash
 Copy
 Edit
 venv\Scripts\activate
-4. Upgrade pip
-css
+Upgrade pip
+
+bash
 Copy
 Edit
 pip install --upgrade pip
-5. Install Dependencies
-nginx
+Install Dependencies
+
+bash
 Copy
 Edit
 pip install -r requirements.txt
-6. Configure Environment Variables (Optional)
+Configure Environment Variables (Optional)
 Create a .env file in the root directory with the following content:
 
-ini
+env
 Copy
 Edit
 SECRET_KEY=your_secret_key_here
@@ -71,33 +78,38 @@ DEBUG=True
 ALLOWED_HOSTS=localhost,127.0.0.1
 If your project doesn't support .env files yet, you can skip this step.
 
-7. Apply Migrations
-nginx
+Apply Migrations
+
+bash
 Copy
 Edit
 python manage.py migrate
-8. Create a Superuser (Optional)
-nginx
+Create a Superuser (Optional)
+
+bash
 Copy
 Edit
 python manage.py createsuperuser
-9. Run the Development Server
-nginx
+Run the Development Server
+
+bash
 Copy
 Edit
 python manage.py runserver
 Open your browser and visit:
 
-cpp
+plaintext
 Copy
 Edit
 http://127.0.0.1:8000/
-10. Access API Documentation (Swagger UI)
-arduino
+Access API Documentation (Swagger UI)
+
+plaintext
 Copy
 Edit
 http://127.0.0.1:8000/swagger/
 🔐 Authentication
+
 Obtain JWT Token
 Send POST request to /api/token/ with JSON body:
 
@@ -111,7 +123,7 @@ Edit
 Use JWT Token
 Include the token in HTTP headers as:
 
-makefile
+plaintext
 Copy
 Edit
 Authorization: Bearer your_access_token
