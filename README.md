@@ -1,84 +1,109 @@
-API Project with Django REST Framework
-📌 Project Overview
-This project is a RESTful API built using Django and Django REST Framework (DRF). It provides functionalities for user authentication, advertisement management, image handling, and wall post interactions. The API is designed to be modular, scalable, and easily extendable.
+# API Project with Django REST Framework
 
-🚀 Features
-User Authentication: Implementing JWT-based authentication for secure user access.
+## 📌 Project Overview
 
-Advertisement Management: CRUD operations for advertisements with optional image attachments.
+This project is a RESTful API built with Django and Django REST Framework, offering features like user authentication, advertisement management, image uploads, and wall posts. It includes JWT authentication and Swagger documentation for API exploration.
 
-Image Handling: Uploading and retrieving images associated with advertisements.
+---
 
-Wall Posts: Creating, updating, and deleting posts on the wall.
+## ⚙️ Prerequisites
 
-Swagger Documentation: Interactive API documentation for easy testing and exploration.
+- Python 3.8+ installed  
+- Git installed (optional but recommended)  
+- Recommended: `virtualenv` for environment isolation (or use built-in venv)
 
-⚙️ Technologies Used
-Django: Web framework for building the API.
+---
 
-Django REST Framework (DRF): Toolkit for building Web APIs.
+## 📥 Installation and Setup Guide
 
-JWT (JSON Web Tokens): For secure authentication.
+### 1. Clone the Repository
 
-SQLite: Database for development and testing.
+```bash
+git clone https://github.com/mzulfikari/api_drf.git
+cd api_drf
+2. Create and Activate a Virtual Environment
+It's highly recommended to use a virtual environment to avoid dependency conflicts.
 
-Swagger: For API documentation and testing.
+On Linux/macOS:
 
-📥 Installation & Setup
-1. Clone the Repository
 bash
 Copy
 Edit
-git clone https://github.com/mzulfikari/api_drf.git
-cd api_drf
-2. Create a Virtual Environment
+python3 -m venv venv
+source venv/bin/activate
+On Windows:
+
 bash
 Copy
 Edit
 python -m venv venv
-3. Activate the Virtual Environment
-Windows:
+venv\Scripts\activate
+3. Install Dependencies
+Make sure pip is up to date:
 
 bash
 Copy
 Edit
-  venv\Scripts\activate
-Linux/macOS:
+pip install --upgrade pip
+Then install all required packages from requirements.txt:
 
-bash
-Copy
-Edit
-  source venv/bin/activate
-4. Install Dependencies
 bash
 Copy
 Edit
 pip install -r requirements.txt
-5. Apply Migrations
+4. Configure Environment Variables (Optional)
+If your project uses environment variables (e.g., for secret keys or database), create a .env file in the root directory:
+
+env
+Copy
+Edit
+SECRET_KEY=your_secret_key_here
+DEBUG=True
+ALLOWED_HOSTS=localhost,127.0.0.1
+(If your project currently doesn't support .env, this step can be skipped or added later.)
+
+5. Apply Database Migrations
+Run database migrations to prepare the SQLite database:
+
 bash
 Copy
 Edit
 python manage.py migrate
-6. Run the Development Server
+6. Create a Superuser (Optional)
+To access Django Admin or create initial users:
+
+bash
+Copy
+Edit
+python manage.py createsuperuser
+Follow the prompts.
+
+7. Run the Development Server
+Start the server locally:
+
 bash
 Copy
 Edit
 python manage.py runserver
-The API will be accessible at http://127.0.0.1:8000/.
+The API will be available at:
 
-🧪 API Documentation
-The API documentation is available through Swagger UI:
+cpp
+Copy
+Edit
+http://127.0.0.1:8000/
+8. Access API Documentation
+Swagger UI is available for interactive API docs and testing:
 
 arduino
 Copy
 Edit
 http://127.0.0.1:8000/swagger/
-Here, you can explore all available endpoints, view request/response formats, and test the API interactively.
-
 🔐 Authentication
-The API uses JWT for authentication. To obtain a token:
+The API uses JWT authentication.
 
-Send a POST request to /api/token/ with your credentials:
+Obtain token:
+
+Send POST request to /api/token/ with:
 
 json
 Copy
@@ -87,15 +112,9 @@ Edit
   "username": "your_username",
   "password": "your_password"
 }
-The response will contain an access token:
+Use token:
 
-json
-Copy
-Edit
-{
-  "access": "your_access_token"
-}
-Include the token in the Authorization header for subsequent requests:
+Add the token to Authorization header of requests:
 
 makefile
 Copy
