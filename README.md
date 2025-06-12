@@ -1,25 +1,34 @@
-📌 Project Overview
-This project is a RESTful API built with Django and Django REST Framework, offering features like user authentication, advertisement management, image uploads, and wall posts. It includes JWT authentication and Swagger documentation for API exploration.
+## 📌 Project Overview
 
-⚙️ Prerequisites
-```
+This project is a RESTful API built using Django and Django REST Framework (DRF).  
+It provides the following main features:
+
+- User registration, login, and JWT authentication  
+- Advertisement management (CRUD)  
+- Image upload and handling  
+- Wall posts API for user interactions  
+- API documentation via Swagger UI  
+
+The API follows REST principles and supports token-based authentication for secure access.
+
+---
+
+## ⚙️ Prerequisites
+
+Make sure you have installed:
+
+```bash
+Python 3.8 or higher
 bash
 Copy
 Edit
-Python 3.8+ installed
-```
+pip (Python package installer)
 bash
 Copy
 Edit
-Git installed (optional but recommended)
-bash
-Copy
-Edit
-Recommended: virtualenv for environment isolation (or use built-in venv)
-📥 Installation and Setup Guide
-
-Clone the Repository
-
+Git (optional, for cloning the repository)
+📥 Installation and Setup
+1. Clone the repository
 bash
 Copy
 Edit
@@ -28,48 +37,33 @@ bash
 Copy
 Edit
 cd api_drf
-Create a Virtual Environment
-
+2. Create and activate a virtual environment
 On Linux/macOS:
 
 bash
 Copy
 Edit
 python3 -m venv venv
-On Windows:
-
-bash
-Copy
-Edit
-python -m venv venv
-Activate the Virtual Environment
-
-On Linux/macOS:
-
-bash
-Copy
-Edit
 source venv/bin/activate
 On Windows:
 
 bash
 Copy
 Edit
+python -m venv venv
 venv\Scripts\activate
-Upgrade pip
-
+3. Upgrade pip
 bash
 Copy
 Edit
 pip install --upgrade pip
-Install Dependencies
-
+4. Install dependencies
 bash
 Copy
 Edit
 pip install -r requirements.txt
-Configure Environment Variables (Optional)
-Create a .env file in the root directory with the following content:
+5. (Optional) Configure environment variables
+Create a .env file in the root directory (if you want to override default settings):
 
 env
 Copy
@@ -77,42 +71,47 @@ Edit
 SECRET_KEY=your_secret_key_here
 DEBUG=True
 ALLOWED_HOSTS=localhost,127.0.0.1
-If your project doesn't support .env files yet, you can skip this step.
-
-Apply Migrations
-
+6. Apply database migrations
 bash
 Copy
 Edit
 python manage.py migrate
-Create a Superuser (Optional)
-
+7. Create a superuser (admin)
 bash
 Copy
 Edit
 python manage.py createsuperuser
-Run the Development Server
-
+8. Run the development server
 bash
 Copy
 Edit
 python manage.py runserver
-Open your browser and visit:
+Visit the API at:
 
 plaintext
 Copy
 Edit
 http://127.0.0.1:8000/
-Access API Documentation (Swagger UI)
+🧰 API Documentation
+Swagger UI is available at:
 
 plaintext
 Copy
 Edit
 http://127.0.0.1:8000/swagger/
-🔐 Authentication
+It provides interactive API documentation and testing.
 
-Obtain JWT Token
-Send POST request to /api/token/ with JSON body:
+🔐 Authentication
+This project uses JWT (JSON Web Tokens) for authentication.
+
+Obtain token
+Send POST request to:
+
+plaintext
+Copy
+Edit
+/api/token/
+with JSON body:
 
 json
 Copy
@@ -121,10 +120,10 @@ Edit
   "username": "your_username",
   "password": "your_password"
 }
-Use JWT Token
-Include the token in HTTP headers as:
+Using the token
+Include the received access token in your request headers:
 
 plaintext
 Copy
 Edit
-Authorization: Bearer your_access_token
+Authorization: Bearer <access_token>
