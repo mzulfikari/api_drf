@@ -19,14 +19,14 @@ Make sure you have installed:
 
 ```bash
 Python 3.8 or higher
-bash
-Copy
-Edit
+```
+```
 pip (Python package installer)
+```
 bash
-Copy
-Edit
+```
 Git (optional, for cloning the repository)
+```
 📥 Installation and Setup
 1. Clone the repository
 bash
