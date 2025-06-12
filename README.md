@@ -2,11 +2,12 @@
 This project is a RESTful API built with Django and Django REST Framework, offering features like user authentication, advertisement management, image uploads, and wall posts. It includes JWT authentication and Swagger documentation for API exploration.
 
 ⚙️ Prerequisites
-
+```
 bash
 Copy
 Edit
 Python 3.8+ installed
+```
 bash
 Copy
 Edit
