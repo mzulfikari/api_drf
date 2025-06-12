@@ -1,94 +1,103 @@
 API Project with Django REST Framework
-📌 Project Description
-This project is a simple API built using Django and Django REST Framework, designed to provide various functionalities such as user account management, advertisements, images, and a Wall feature.
-Swagger is also integrated for automatic API documentation.
+📌 Project Overview
+This project is a RESTful API built using Django and Django REST Framework (DRF). It provides functionalities for user authentication, advertisement management, image handling, and wall post interactions. The API is designed to be modular, scalable, and easily extendable.
 
 🚀 Features
-User Account Management: Ability to register, login, and manage users.
+User Authentication: Implementing JWT-based authentication for secure user access.
 
-Advertisements Management: Create, update, and delete advertisements.
+Advertisement Management: CRUD operations for advertisements with optional image attachments.
 
-Image Management: Upload and manage images.
+Image Handling: Uploading and retrieving images associated with advertisements.
 
-Wall Management: Post and manage wall posts.
+Wall Posts: Creating, updating, and deleting posts on the wall.
 
-Swagger Documentation: Access API documentation via Swagger UI.
+Swagger Documentation: Interactive API documentation for easy testing and exploration.
 
-📥 Prerequisites
-Python 3.8 or higher
+⚙️ Technologies Used
+Django: Web framework for building the API.
 
-Django 4.2 or higher
+Django REST Framework (DRF): Toolkit for building Web APIs.
 
-Django REST Framework
+JWT (JSON Web Tokens): For secure authentication.
 
-SQLite (for development environment)
+SQLite: Database for development and testing.
 
-⚙️ Setup Instructions
-Clone the repository:
+Swagger: For API documentation and testing.
 
+📥 Installation & Setup
+1. Clone the Repository
 bash
 Copy
 Edit
 git clone https://github.com/mzulfikari/api_drf.git
 cd api_drf
-Create and activate a virtual environment:
-
+2. Create a Virtual Environment
 bash
 Copy
 Edit
 python -m venv venv
-source venv/bin/activate  # Linux/Mac
-venv\Scripts\activate     # Windows
-Install dependencies:
+3. Activate the Virtual Environment
+Windows:
 
+bash
+Copy
+Edit
+  venv\Scripts\activate
+Linux/macOS:
+
+bash
+Copy
+Edit
+  source venv/bin/activate
+4. Install Dependencies
 bash
 Copy
 Edit
 pip install -r requirements.txt
-Run migrations:
-
+5. Apply Migrations
 bash
 Copy
 Edit
 python manage.py migrate
-Start the development server:
-
+6. Run the Development Server
 bash
 Copy
 Edit
 python manage.py runserver
-🧪 Using the API
-After starting the server, you can access the API documentation through Swagger UI:
+The API will be accessible at http://127.0.0.1:8000/.
+
+🧪 API Documentation
+The API documentation is available through Swagger UI:
 
 arduino
 Copy
 Edit
 http://127.0.0.1:8000/swagger/
-On this page, you can view all available endpoints and send test requests.
+Here, you can explore all available endpoints, view request/response formats, and test the API interactively.
 
 🔐 Authentication
-Some endpoints require authentication.
-You can obtain an access token via /api/token/ and include it in your request headers as:
+The API uses JWT for authentication. To obtain a token:
+
+Send a POST request to /api/token/ with your credentials:
+
+json
+Copy
+Edit
+{
+  "username": "your_username",
+  "password": "your_password"
+}
+The response will contain an access token:
+
+json
+Copy
+Edit
+{
+  "access": "your_access_token"
+}
+Include the token in the Authorization header for subsequent requests:
 
 makefile
 Copy
 Edit
-Authorization: Bearer <your_token>
-📄 Documentation
-For full API documentation and usage, visit Swagger UI at:
-
-arduino
-Copy
-Edit
-http://127.0.0.1:8000/swagger/
-🛠️ Project Structure
-The project includes the following apps:
-
-account: User account management
-
-ads: Advertisement management
-
-images: Image management
-
-Wall_api: Wall posts management
-
+Authorization: Bearer your_access_token
