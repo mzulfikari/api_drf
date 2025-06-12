@@ -30,14 +30,15 @@ Git (optional, for cloning the repository)
 📥 Installation and Setup
 1. Clone the repository
 bash
-Copy
-Edit
+```
 git clone https://github.com/mzulfikari/api_drf.git
-bash
-Copy
-Edit
+```
+```
 cd api_drf
+```
 2. Create and activate a virtual environment
+```
+3. 
 On Linux/macOS:
 
 bash
