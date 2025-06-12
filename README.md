@@ -1,122 +1,117 @@
-# API Project with Django REST Framework
-
-## 📌 Project Overview
-
+API Project with Django REST Framework
+📌 Project Overview
+"""
 This project is a RESTful API built with Django and Django REST Framework, offering features like user authentication, advertisement management, image uploads, and wall posts. It includes JWT authentication and Swagger documentation for API exploration.
+"""
 
----
+⚙️ Prerequisites
+"""
 
-## ⚙️ Prerequisites
+Python 3.8+ installed
 
-- Python 3.8+ installed  
-- Git installed (optional but recommended)  
-- Recommended: `virtualenv` for environment isolation (or use built-in venv)
+Git installed (optional but recommended)
 
----
+Recommended: virtualenv for environment isolation (or use built-in venv)
+"""
 
-## 📥 Installation and Setup Guide
-
-### 1. Clone the Repository
-
-```bash
+📥 Installation and Setup Guide
+1. Clone the Repository
+"""
 git clone https://github.com/mzulfikari/api_drf.git
-cd api_drf
-2. Create and Activate a Virtual Environment
-It's highly recommended to use a virtual environment to avoid dependency conflicts.
+"""
 
+"""
+cd api_drf
+"""
+
+2. Create a Virtual Environment
 On Linux/macOS:
 
-bash
-Copy
-Edit
+"""
 python3 -m venv venv
-source venv/bin/activate
+"""
+
 On Windows:
 
-bash
-Copy
-Edit
+"""
 python -m venv venv
+"""
+
+3. Activate the Virtual Environment
+On Linux/macOS:
+
+"""
+source venv/bin/activate
+"""
+
+On Windows:
+
+"""
 venv\Scripts\activate
-3. Install Dependencies
-Make sure pip is up to date:
+"""
 
-bash
-Copy
-Edit
+4. Upgrade pip
+"""
 pip install --upgrade pip
-Then install all required packages from requirements.txt:
+"""
 
-bash
-Copy
-Edit
+5. Install Dependencies
+"""
 pip install -r requirements.txt
-4. Configure Environment Variables (Optional)
-If your project uses environment variables (e.g., for secret keys or database), create a .env file in the root directory:
+"""
 
-env
-Copy
-Edit
+6. Configure Environment Variables (Optional)
+"""
+Create a .env file in the root directory with content like:
+
 SECRET_KEY=your_secret_key_here
 DEBUG=True
 ALLOWED_HOSTS=localhost,127.0.0.1
-(If your project currently doesn't support .env, this step can be skipped or added later.)
 
-5. Apply Database Migrations
-Run database migrations to prepare the SQLite database:
+If your project doesn't support .env files yet, you can skip this step.
+"""
 
-bash
-Copy
-Edit
+7. Apply Migrations
+"""
 python manage.py migrate
-6. Create a Superuser (Optional)
-To access Django Admin or create initial users:
+"""
 
-bash
-Copy
-Edit
+8. Create a Superuser (Optional)
+"""
 python manage.py createsuperuser
-Follow the prompts.
+"""
 
-7. Run the Development Server
-Start the server locally:
-
-bash
-Copy
-Edit
+9. Run the Development Server
+"""
 python manage.py runserver
-The API will be available at:
+"""
 
-cpp
-Copy
-Edit
+Open your browser and visit:
+
+"""
 http://127.0.0.1:8000/
-8. Access API Documentation
-Swagger UI is available for interactive API docs and testing:
+"""
 
-arduino
-Copy
-Edit
+10. Access API Documentation (Swagger UI)
+"""
 http://127.0.0.1:8000/swagger/
+"""
+
 🔐 Authentication
-The API uses JWT authentication.
+Obtain JWT Token
+"""
+Send POST request to /api/token/ with JSON body:
 
-Obtain token:
-
-Send POST request to /api/token/ with:
-
-json
-Copy
-Edit
 {
-  "username": "your_username",
-  "password": "your_password"
+"username": "your_username",
+"password": "your_password"
 }
-Use token:
+"""
 
-Add the token to Authorization header of requests:
+Use JWT Token
+"""
+Include the token in HTTP headers as:
 
-makefile
-Copy
-Edit
 Authorization: Bearer your_access_token
+"""
+
